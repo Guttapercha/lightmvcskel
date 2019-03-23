@@ -15,9 +15,9 @@ $baseConfig['appName'] = 'The LightMVC Framework Skeleton Application';
 $baseConfig['doctrine']['ORM']['dem1'] = [
     'driver'   => 'pdo_mysql',
     'host'     => 'localhost',
-    'user'     => 'USERNAME',
-    'password' => 'PASSWORD',
-    'dbname'   => 'DATABASE',
+    'user'     => 'lightmvc_user',
+    'password' => 'password',
+    'dbname'   => 'lightmvctestdb',
 ];
 
 /*$baseConfig['atlas']['ORM']['aem1'] = [
