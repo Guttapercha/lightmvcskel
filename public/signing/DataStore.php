@@ -22,72 +22,15 @@ class DataStore
     protected $loginCheck = FALSE;
     protected $validSession = FALSE;
     protected $postLoginForm = TRUE;
-    public static $authorizationValidaion = FALSE;
-    public static $loginName = "no name";
-    protected $nameAdmin = "no name";
+    protected $authorization = FALSE;
 
-    /**
-     * DataStore constructor.
-     * @param string $nameAdmin
-     */
-    public function __construct()
-    {
-//        self::$authorizationValidaion = TRUE;
-        $this->nameAdmin = self::getLoginName();
-    }
-
-    /**
-     * @return string
-     */
-    public function getNameAdmin(): string
-    {
-        return $this->nameAdmin;
-    }
-
-    /**
-     * @param string $nameAdmin
-     */
-    public function setNameAdmin(string $nameAdmin): void
-    {
-        $this->nameAdmin = $nameAdmin;
-    }
-
-
-
-    /**
-     * @return string
-     */
-    public static function getLoginName(): string
-    {
-        return self::$loginName;
-    }
-
-    /**
-     * @param string $loginName
-     */
-    public static function setLoginName(string $loginName): void
-    {
-        self::$loginName = $loginName;
-    }
-
-
-
-    /**
+     /**
      * @return bool
      */
-    public static function isAuthorizationValidaion(): bool
+    public function isAuthorization(): bool
     {
-        return self::$authorizationValidaion;
+        return $this->authorization;
     }
-
-    /**
-     * @param bool $authorizationValidaion
-     */
-    public static function setAuthorizationValidaion(bool $authorizationValidaion): void
-    {
-        self::$authorizationValidaion = $authorizationValidaion;
-    }
-
 
     /**
      * @return int
@@ -126,7 +69,9 @@ public function getData()
             $this->postLoginForm = FALSE;
         } else {
             $this->validSession = session_obliterate();
-            $this->errorMessage = 3;
+//            $this->errorMessage = 3;
+            $this->errorMessage = 0;
+
             $this->postLoginForm = TRUE;
         }
 
@@ -138,15 +83,13 @@ public function getData()
 public function loginVerification() {
 
     // Admin authorization verification.
-//    if (isset($_POST['submit'])
-//        && $_POST['submit'] == 1
-//        && $_POST['username']=='admin'
-//        && $_POST['password']=='admin')
-//    {
-//    $setAuthorizationValidaion(TRUE);
-//    }
-
-    self::$authorizationValidaion == TRUE;
+    if (isset($_POST['submit'])
+        && $_POST['submit'] == 1
+        && $_POST['username']=='admin'
+        && $_POST['password']=='admin')
+    {
+    $this->authorization = TRUE;
+    }
 
 
 // Login verification.
@@ -154,8 +97,6 @@ public function loginVerification() {
         && $_POST['submit'] == 1
         && !empty($_POST['username'])
         && !empty($_POST['password'])) {
-
-        self::setLoginName("new name");
 
         if ($this->validSession === FALSE) {
 
@@ -191,7 +132,9 @@ public function loginVerification() {
                 if (isset($_SESSION['LOGGEDIN'])) {
 
                     $this->validSession = session_obliterate();
-                    $this->errorMessage = 3;
+//                    $this->errorMessage = 3;
+                    $this->errorMessage = 0;
+
                     $this->postLoginForm = TRUE;
 
                 } else {
@@ -207,7 +150,9 @@ public function loginVerification() {
             } else {
 
                 $this->validSession = session_obliterate();
-                $this->errorMessage = 3;
+//                $this->errorMessage = 3;
+                $this->errorMessage = 0;
+
                 $this->postLoginForm = TRUE;
             }
 
@@ -244,7 +189,9 @@ public function loginVerification() {
             $this->validSession = session_obliterate();
         }
 
-        $this->errorMessage = 3;
+//        $this->errorMessage = 3;
+        $this->errorMessage = 0;
+
         $this->postLoginForm = TRUE;
     }
 
@@ -253,7 +200,7 @@ public function loginVerification() {
 
         switch ($this->errorMessage) {
             case 0:
-                $this->userMessage = 'Please sign in';
+                $this->userMessage ='Please sign in';
                 break;
             case 1:
                 $this->userMessage = 'Wrong credentials!  <a href="index.php">Try again</a>.';
@@ -263,7 +210,8 @@ public function loginVerification() {
                 $this->userMessage = 'You are logged out!  <a href="index.php">You can login again</a>.';
                 break;
             case 3:
-                $this->userMessage = 'Invalid session <a href="index.php">Please login again</a>.';
+//                $this->errorMessage = 0;
+//                $this->userMessage = 'Invalid session <a href="index.php">Please login again</a>.';
                 break;
         }
     }

@@ -120,14 +120,15 @@ class TemplateSignin
             $htmlOut .= "\t<div class=\"container theme-showcase\" role=\"main\">\n";
             $htmlOut .= "\t\t<!-- Main jumbotron for a primary marketing message or call to action -->\n";
             $htmlOut .= "\t\t<div class=\"jumbotron\">\n";
-
-
-                if (isset($_GET["check"])) {
-                    $htmlOut .= "\t\t\t<h2>Hello, " . $_SESSION['REMOTE_USER'] . "!<br /><br /><br />You are still logged in.<br /><br /><br /><br /></h2>\n";
-
-                } else {
-                    $htmlOut .= "\t\t\t<h2>Welcome, " . $_SESSION['REMOTE_USER'] . "!<br /><br /><br />You are logged in.</h2><br /><br /><p><a href=\"index.php?check=1\">Check cookie</a><br /><br /><br /><br /></p>\n";
-                }
+            $htmlOut .= "\t\t\t<h2>Welcome, " . $_SESSION['REMOTE_USER'] . "!<br /><br /><br />You are logged in.</h2><br /><br />";
+//
+//
+//                if (isset($_GET["check"])) {
+//                    $htmlOut .= "\t\t\t<h2>Hello, " . $_SESSION['REMOTE_USER'] . "!<br /><br /><br />You are still logged in.<br /><br /><br /><br /></h2>\n";
+//
+//                } else {
+//                    $htmlOut .= "\t\t\t<h2>Welcome, " . $_SESSION['REMOTE_USER'] . "!<br /><br /><br />You are logged in.</h2><br /><br /><p><a href=\"index.php?check=1\">Check cookie</a><br /><br /><br /><br /></p>\n";
+//                }
 
 
             $htmlOut .= "\t\t\t<form action=\"index.php\" method=\"post\">\n";
@@ -155,7 +156,6 @@ class TemplateSignin
     }
 
     public function render () {
-
         echo $this->htmlout;
     }
 

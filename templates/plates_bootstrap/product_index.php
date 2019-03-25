@@ -44,23 +44,22 @@
                             </td>
 
                             <?php
-//                            require '../../public/signing/DataStore.php';
-                            $ds = new DataStore();
-                            $na = $ds->getNameAdmin();
-//                            require 'signing/DataStore.php';
 
-//                            include '../../public/signing/DataStore.php';
-//                            $ts = new TemplateSignin();
-                            $converted = $ds::isAuthorizationValidaion() ? 'true' : 'false';
-//
-                            echo "<p>". $na." and ".$converted. "</p>\n";
+                            $contents = 'false';
 
-                            if($ds::isAuthorizationValidaion())
+                            if (file_exists ("signing/yes_no.txt")) {
+                                $filename = "signing/yes_no.txt";
+                                $handle = fopen($filename, "r") or die("Unable to open file!");
+                                $contents = fread($handle, filesize($filename));
+                                fclose($handle);
+                                unlink ("signing/yes_no.txt");
+                            }
+
+                            if($contents == 'true')
 
                             {
                                 echo "                            <td>\n";
-                                echo $view['urlbaseaddr'];
-                                echo "<a href=". $view['urlbaseaddr']. "products/delete/". $product['id'].">Delete</a>\n";
+                                echo "<a href=". $view["urlbaseaddr"]. "products/delete/". $product['id'].">Delete</a>\n";
                                 echo "                            </td>";
 
                             }

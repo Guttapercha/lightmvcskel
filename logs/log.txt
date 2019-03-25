@@ -25,3 +25,16 @@ Object of class DataStore could not be converted to string
 Undefined variable: ds
 Undefined variable: ds
 Undefined variable: ds
+Undefined variable: _SESSION
+Undefined variable: ds
+Undefined variable: na
+Undefined variable: na
+Undefined variable: na
+Undefined variable: ds
+Class 'DataStore' not found
+Class 'WebController' not found
+Class 'WebController' not found
+fopen(../../public/signing/yes_no.txt): failed to open stream: No such file or directory
+Undefined variable: contents
+Undefined variable: contents
+fopen(signing/yeso.txt): failed to open stream: No such file or directory
