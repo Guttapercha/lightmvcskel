@@ -22,6 +22,72 @@ class DataStore
     protected $loginCheck = FALSE;
     protected $validSession = FALSE;
     protected $postLoginForm = TRUE;
+    public static $authorizationValidaion = FALSE;
+    public static $loginName = "no name";
+    protected $nameAdmin = "no name";
+
+    /**
+     * DataStore constructor.
+     * @param string $nameAdmin
+     */
+    public function __construct()
+    {
+//        self::$authorizationValidaion = TRUE;
+        $this->nameAdmin = self::getLoginName();
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameAdmin(): string
+    {
+        return $this->nameAdmin;
+    }
+
+    /**
+     * @param string $nameAdmin
+     */
+    public function setNameAdmin(string $nameAdmin): void
+    {
+        $this->nameAdmin = $nameAdmin;
+    }
+
+
+
+    /**
+     * @return string
+     */
+    public static function getLoginName(): string
+    {
+        return self::$loginName;
+    }
+
+    /**
+     * @param string $loginName
+     */
+    public static function setLoginName(string $loginName): void
+    {
+        self::$loginName = $loginName;
+    }
+
+
+
+    /**
+     * @return bool
+     */
+    public static function isAuthorizationValidaion(): bool
+    {
+        return self::$authorizationValidaion;
+    }
+
+    /**
+     * @param bool $authorizationValidaion
+     */
+    public static function setAuthorizationValidaion(bool $authorizationValidaion): void
+    {
+        self::$authorizationValidaion = $authorizationValidaion;
+    }
+
 
     /**
      * @return int
@@ -71,11 +137,25 @@ public function getData()
 
 public function loginVerification() {
 
+    // Admin authorization verification.
+//    if (isset($_POST['submit'])
+//        && $_POST['submit'] == 1
+//        && $_POST['username']=='admin'
+//        && $_POST['password']=='admin')
+//    {
+//    $setAuthorizationValidaion(TRUE);
+//    }
+
+    self::$authorizationValidaion == TRUE;
+
+
 // Login verification.
     if (isset($_POST['submit'])
         && $_POST['submit'] == 1
         && !empty($_POST['username'])
         && !empty($_POST['password'])) {
+
+        self::setLoginName("new name");
 
         if ($this->validSession === FALSE) {
 

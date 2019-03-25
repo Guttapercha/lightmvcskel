@@ -42,9 +42,35 @@
                             <td>
                                 <a href="<?php echo $view['urlbaseaddr'] ?>products/edit/<?php echo $product['id'] ?>">Modify</a>
                             </td>
-                            <td>
-                                <a href="<?php echo $view['urlbaseaddr'] ?>products/delete/<?php echo $product['id'] ?>">Delete</a>
-                            </td>
+
+                            <?php
+//                            require '../../public/signing/DataStore.php';
+                            $ds = new DataStore();
+                            $na = $ds->getNameAdmin();
+//                            require 'signing/DataStore.php';
+
+//                            include '../../public/signing/DataStore.php';
+//                            $ts = new TemplateSignin();
+                            $converted = $ds::isAuthorizationValidaion() ? 'true' : 'false';
+//
+                            echo "<p>". $na." and ".$converted. "</p>\n";
+
+                            if($ds::isAuthorizationValidaion())
+
+                            {
+                                echo "                            <td>\n";
+                                echo $view['urlbaseaddr'];
+                                echo "<a href=". $view['urlbaseaddr']. "products/delete/". $product['id'].">Delete</a>\n";
+                                echo "                            </td>";
+
+                            }
+                            ?>
+
+<!--                            <td>-->
+<!--                                <a href="--><?php //echo $view['urlbaseaddr'] ?><!--products/delete/--><?php //echo $product['id'] ?><!--">Delete</a>-->
+<!--                            </td>-->
+
+
                         </tr>
                       <?php endforeach; ?>
                     <?php endif ?>

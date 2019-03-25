@@ -8,7 +8,7 @@ function getConnection($getLink = TRUE)
     
     if ($link === NULL) {
         
-        $link = $link = mysqli_connect('localhost:3306', 'root', '', 'evgeniyadb_login');
+        $link = $link = mysqli_connect('localhost:3306', 'lightmvc_user', 'password', 'lightmvctestdb');
         
     } elseif ($getLink === FALSE) {
         
@@ -43,7 +43,7 @@ function queryResults($query)
 function checkLogin($username, $password)
 {
 
-    $query = 'SELECT `username`, `password` FROM `logins` WHERE `username` LIKE ' . getQuote() . $username . getQuote();
+    $query = 'SELECT `name`, `password` FROM `users` WHERE `name` LIKE ' . getQuote() . $username . getQuote();
     $values = queryResults($query);
     $passwordVerified = password_verify($password, $values['password']);
 

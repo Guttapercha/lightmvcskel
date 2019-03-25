@@ -66,6 +66,7 @@ class TemplateSignin
             $htmlOut .= "\t\t</form>\n";
             $htmlOut .= "\t</div> <!-- /container -->\n\n";
 
+
         } else {
 
             $htmlOut .= "\t<div class=\"container theme-showcase\" role=\"main\">\n";

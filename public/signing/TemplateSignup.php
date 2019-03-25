@@ -78,7 +78,7 @@ function getConnection()
     }
 
     if ($link === NULL) {
-        $link = mysqli_connect('localhost:3306', 'root', '', 'evgeniyadb_login');
+        $link = mysqli_connect('localhost:3306', 'lightmvc_user', 'password', 'lightmvctestdb');
     }
     return $link;
 }
@@ -120,12 +120,12 @@ if (isset($_POST['submit'])) {
 
     // first check the database to make sure
     // a user does not already exist with the same username and/or email
-    $user_check_query = "SELECT * FROM logins WHERE username='$name' LIMIT 1";
+    $user_check_query = "SELECT * FROM users WHERE name='$name' LIMIT 1";
     $result = mysqli_query($db, $user_check_query);
     $user = mysqli_fetch_assoc($result);
 
     if ($user) { // if user exists
-        if ($user['username'] === $name) {
+        if ($user['name'] === $name) {
             array_push($errors, "Username already exists");
             echo '<span style="color: firebrick;text-align:center;">Username already exists</span>';
         }
@@ -136,7 +136,7 @@ if (isset($_POST['submit'])) {
 //        $password = md5($password);//encrypt the password before saving in the database
         $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO logins (username, password) 
+        $query = "INSERT INTO users (name, password) 
   			  VALUES('$name', '$password')";
         mysqli_query($db, $query);
         $_SESSION['name'] = $name;

@@ -12,6 +12,8 @@ $baseConfig['doctrine']['ORM']['dem1'] = [
     'dbname'   => 'lightmvctestdb',
 ];
 
+//set_include_path(get_include_path() . PATH_SEPARATOR . 'C:\xampp\lightmvcskel\public');
+
 require 'routes.config.php';
 
 require 'view.config.php';

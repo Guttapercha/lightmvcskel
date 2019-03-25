@@ -1,0 +1,27 @@
+Undefined index: username
+Class 'TemplateSignin' not found
+Class 'TemplateSignin' not found
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+Undefined index: username
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+Undefined variable: AuthorizationValidation
+include(../../public/signing/TemplateSignin.php): failed to open stream: No such file or directory
+include(../../public/signing/DataStore.php): failed to open stream: No such file or directory
+The template function "isAuthorizationValidaion" was not found.
+Undefined variable: uthorizationValidaion
+Undefined variable: authorizationValidaion
+Undefined variable: authorizationValidaion
+Undefined variable: ds
+Return value of DataStore::isAuthorizationValidaion() must be of the type boolean, null returned
+Call to undefined function String()
+Object of class DataStore could not be converted to string
+Undefined variable: ds
+Undefined variable: ds
+Undefined variable: ds

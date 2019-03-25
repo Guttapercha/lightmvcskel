@@ -2,7 +2,10 @@
 
 declare(strict_types = 1);
 
+
+
 ob_start();
+
 
 if (!defined('BASEDIR')) {
     define('BASEDIR', dirname(dirname(__FILE__)));
@@ -24,6 +27,7 @@ unlink(BASEDIR . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . 'dummy.txt
 unlink(BASEDIR . DIRECTORY_SEPARATOR . 'templates_c' . DIRECTORY_SEPARATOR . 'dummy.txt');
 
 require_once BASEDIR . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+require 'signing/WebController.php';
 
 // Instantiate the loader
 // $loader = new Ascmvc\Mvc\Psr4Autoloader;
