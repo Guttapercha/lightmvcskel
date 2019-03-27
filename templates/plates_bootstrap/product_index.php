@@ -52,7 +52,7 @@
                                 $handle = fopen($filename, "r") or die("Unable to open file!");
                                 $contents = fread($handle, filesize($filename));
                                 fclose($handle);
-                                unlink ("signing/yes_no.txt");
+//                                unlink ("signing/yes_no.txt");
                             }
 
                             if($contents == 'true')
